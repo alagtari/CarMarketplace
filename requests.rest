@@ -1,0 +1,69 @@
+POST  http://localhost:3000/register
+content-Type: application/json
+
+{ 
+ "username":"ala",
+ "address":"gtari",
+ "email":"ala@gtari.tn",
+ "password":"aaa",
+ "phoneNumber":"28734227"
+}
+
+
+###
+
+POST http://localhost:3000/login
+content-Type: application/json
+
+{ 
+ "email":"ala@gtari.tn",
+ "password":"aaa"
+}
+###
+GET http://localhost:3000/car/630aab6bf2aa9e1133406f8b
+
+###
+GET http://localhost:3000/car/category/Joi.string().required()2
+
+###
+GET http://localhost:3000/car/search/Joi.string\(\)
+
+###
+GET http://localhost:3000/car
+content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY2IzMWY1YjBhZmMxMTg5IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjE2NDM0ODksImV4cCI6MTY2MTY1MDY4OX0.iujlrj_VkphKwFribD9G2xg-Mrj04OdygwNMzE9_nKk
+
+
+###
+DELETE  http://localhost:3000/car/630aae8054f2190b0d855c8d
+content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY2IzMWY1YjBhZmMxMTg5IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjE2NDM0ODksImV4cCI6MTY2MTY1MDY4OX0.iujlrj_VkphKwFribD9G2xg-Mrj04OdygwNMzE9_nKk
+
+
+###
+POST http://localhost:3000/car
+content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY2IzMWY1YjBhZmMxMTg5IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjE2NDM0ODksImV4cCI6MTY2MTY1MDY4OX0.iujlrj_VkphKwFribD9G2xg-Mrj04OdygwNMzE9_nKk
+
+
+{
+     "name": "Joi.str",
+     "price": "Joi.string().required()",
+     "color": "Joi.string().required()",
+     "category": "Joi.string().required()2",
+     "description": "Joi.string().required()",
+     "photo":"image"
+}
+
+###
+GET http://localhost:3000/saved
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY2IzMWY1YjBhZmMxMTg5IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjE2NDM0ODksImV4cCI6MTY2MTY1MDY4OX0.iujlrj_VkphKwFribD9G2xg-Mrj04OdygwNMzE9_nKk
+
+###
+POST http://localhost:3000/saved?car_id=630aa2711348ce02e52cba4c
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY2IzMWY1YjBhZmMxMTg5IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjE2NDM0ODksImV4cCI6MTY2MTY1MDY4OX0.iujlrj_VkphKwFribD9G2xg-Mrj04OdygwNMzE9_nKk
+
+###
+PUT http://localhost:3000/saved?car_id=630aa2711348ce02e52cba4c
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY2IzMWY1YjBhZmMxMTg5IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjE2NDM0ODksImV4cCI6MTY2MTY1MDY4OX0.iujlrj_VkphKwFribD9G2xg-Mrj04OdygwNMzE9_nKk
+
