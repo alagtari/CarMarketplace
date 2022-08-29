@@ -14,7 +14,9 @@ const register = require('./routes/signup')
 const login = require('./routes/login')
 const car = require('./routes/car')
 const saved = require('./routes/saved')
-
+app.get('/',(req,res)=>{
+    return res.status(200).send('hello world !')
+})
 app.use('/register',register)
 app.use('/login',login)
 app.use('/car',car)

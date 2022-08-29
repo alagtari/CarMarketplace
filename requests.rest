@@ -67,3 +67,7 @@ Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY
 PUT http://localhost:3000/saved?car_id=630aa2711348ce02e52cba4c
 Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY2IzMWY1YjBhZmMxMTg5IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjE2NDM0ODksImV4cCI6MTY2MTY1MDY4OX0.iujlrj_VkphKwFribD9G2xg-Mrj04OdygwNMzE9_nKk
 
+###
+GET http://localhost:3000/
+
+
