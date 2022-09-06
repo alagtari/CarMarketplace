@@ -65,7 +65,7 @@ router.get("/", async (req, res) => {
 router.get("/", tokenVerification,async (req, res) => {
 
   try {
-      console.log(req.user_id);
+      console.log(req.user_id); 
       const owner = req.user_id
       const cars = await Car.find({owner}) 
  
