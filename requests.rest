@@ -1,4 +1,4 @@
-POST  http://localhost:3000/register
+POST  https://car-marketplace-backend.vercel.app/register
 content-Type: application/json
 
 { 
@@ -12,7 +12,7 @@ content-Type: application/json
 
 ###
 
-POST http://localhost:3000/login
+POST https://car-marketplace-backend.vercel.app/login
 content-Type: application/json
 
 { 
@@ -20,54 +20,54 @@ content-Type: application/json
  "password":"aaa"
 }
 ###
-GET http://localhost:3000/car/630aab6bf2aa9e1133406f8b
+GET https://car-marketplace-backend.vercel.app/car/630cf406e8ebf5727bc0a5f4
 
 ###
-GET http://localhost:3000/car/category/Joi.string().required()2
+GET https://car-marketplace-backend.vercel.app/car/category/Coupe
 
 ###
-GET http://localhost:3000/car/search/Joi.string\(\)
+GET https://car-marketplace-backend.vercel.app/car/search/p
 
 ###
-GET http://localhost:3000/car
+GET https://car-marketplace-backend.vercel.app/car
 content-Type: application/json
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY2IzMWY1YjBhZmMxMTg5IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjE2NDM0ODksImV4cCI6MTY2MTY1MDY4OX0.iujlrj_VkphKwFribD9G2xg-Mrj04OdygwNMzE9_nKk
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjIyNDYzOTAsImV4cCI6MTY2MjI1MzU5MH0.KyOKReIraMCe09hlnNv6Y3hCG0nLMvXzni3ePP5OH_E
 
 
 ###
-DELETE  http://localhost:3000/car/630aae8054f2190b0d855c8d
+DELETE  https://car-marketplace-backend.vercel.app/car/630cf449e8ebf5727bc0a5f8
 content-Type: application/json
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY2IzMWY1YjBhZmMxMTg5IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjE2NDM0ODksImV4cCI6MTY2MTY1MDY4OX0.iujlrj_VkphKwFribD9G2xg-Mrj04OdygwNMzE9_nKk
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjIyNDYzOTAsImV4cCI6MTY2MjI1MzU5MH0.KyOKReIraMCe09hlnNv6Y3hCG0nLMvXzni3ePP5OH_E
 
 
 ###
-POST http://localhost:3000/car
+POST https://car-marketplace-backend.vercel.app/car
 content-Type: application/json
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY2IzMWY1YjBhZmMxMTg5IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjE2NDM0ODksImV4cCI6MTY2MTY1MDY4OX0.iujlrj_VkphKwFribD9G2xg-Mrj04OdygwNMzE9_nKk
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjIyNDYzOTAsImV4cCI6MTY2MjI1MzU5MH0.KyOKReIraMCe09hlnNv6Y3hCG0nLMvXzni3ePP5OH_E
 
 
 {
-     "name": "Joi.str",
-     "price": "Joi.string().required()",
-     "color": "Joi.string().required()",
-     "category": "Joi.string().required()2",
+     "name": "ferrari roma",
+     "price": "$250,000",
+     "color": "red",
+     "category": "Coupe",
      "description": "Joi.string().required()",
-     "photo":"image"
+     "photo":"file:///var/mobile/Containers/Data/Application/70CF2220-2413-49E2-A90F-96C7E3882401/Library/Caches/ExponentExperienceData/%2540alagtari957%252FCarMarketplace/ImagePicker/A5C303CC-6141-44C9-B3EC-F9CFC7801070.png"
 }
 
 ###
-GET http://localhost:3000/saved
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY2IzMWY1YjBhZmMxMTg5IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjE2NDM0ODksImV4cCI6MTY2MTY1MDY4OX0.iujlrj_VkphKwFribD9G2xg-Mrj04OdygwNMzE9_nKk
+GET http://localhost:4000/saved
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjIyNDYzOTAsImV4cCI6MTY2MjI1MzU5MH0.KyOKReIraMCe09hlnNv6Y3hCG0nLMvXzni3ePP5OH_E
 
 ###
-POST http://localhost:3000/saved?car_id=630aa2711348ce02e52cba4c
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY2IzMWY1YjBhZmMxMTg5IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjE2NDM0ODksImV4cCI6MTY2MTY1MDY4OX0.iujlrj_VkphKwFribD9G2xg-Mrj04OdygwNMzE9_nKk
+POST https://car-marketplace-backend.vercel.app/saved?car_id=6313da20d23862ab65f0f10d
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjIyNDYzOTAsImV4cCI6MTY2MjI1MzU5MH0.KyOKReIraMCe09hlnNv6Y3hCG0nLMvXzni3ePP5OH_E
 
 ###
-PUT http://localhost:3000/saved?car_id=630aa2711348ce02e52cba4c
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYWFhZGNhY2IzMWY1YjBhZmMxMTg5IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjE2NDM0ODksImV4cCI6MTY2MTY1MDY4OX0.iujlrj_VkphKwFribD9G2xg-Mrj04OdygwNMzE9_nKk
+PUT https://car-marketplace-backend.vercel.app/saved?car_id=6313dfb2569616920a3c91a1
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjIyNDYzOTAsImV4cCI6MTY2MjI1MzU5MH0.KyOKReIraMCe09hlnNv6Y3hCG0nLMvXzni3ePP5OH_E
 
 ###
-GET http://localhost:3000/
-
+GET https://car-marketplace-backend.vercel.app/
+6313e045569616920a3c91af
 

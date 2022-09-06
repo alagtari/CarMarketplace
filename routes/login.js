@@ -13,7 +13,7 @@ router.post("/",verifyreqestBody, async (req, res) => {
       
      
       const user = await User.findOne({ email });
-      if (!user || !await bcrypt.compare(password, user.password)) return res.status(400).json({message:"Invalid Credentials"});
+      if (!user || !await bcrypt.compare(password, user.password)) return res.status(404).json({message:"Invalid Credentials"});
         
         const token = jwt.sign(
           { user_id: user._id, email },
