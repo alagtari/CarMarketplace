@@ -25,8 +25,10 @@ router.get("/:id", async (req, res) => {
         category:car.category ,
         description:car.description ,
         photo:car.photo ,
+        year:car.year ,
+        mileage:car.mileage ,
         phone:user.phoneNumber,
-        address:user.address
+        address:user.address,
 
       } 
       return res.status(200).send(result);

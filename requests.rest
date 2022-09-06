@@ -20,13 +20,13 @@ content-Type: application/json
  "password":"aaa"
 }
 ###
-GET https://car-marketplace-backend.vercel.app/car/630cf406e8ebf5727bc0a5f4
+GET https://car-marketplace-backend.vercel.app/car/63179ddb86b1135d0f30b37f
 
 ###
 GET https://car-marketplace-backend.vercel.app/car/category/Coupe
 
 ###
-GET http://localhost:3000/car?name=
+GET https://car-marketplace-backend.vercel.app/car?name=f
 
 ###
 GET https://car-marketplace-backend.vercel.app/car
