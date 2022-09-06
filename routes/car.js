@@ -48,11 +48,12 @@ router.get("/category/:category", async (req, res) => {
   }
 });
 
-router.get("/search/:name", async (req, res) => {
+router.get("/", async (req, res) => {
 
   try {
-    const name=req.params.name
-      const cars = await Car.find({name: { $regex:name, $options:"i" }}) 
+    const name=req.query.name
+    if (name ==="") return res.status(200).send([]);
+    const cars = await Car.find({name: { $regex:name, $options:"i" }}) 
        
       return res.status(200).send(cars);
   
@@ -78,14 +79,15 @@ router.get("/", tokenVerification,async (req, res) => {
 router.post("/",tokenVerification,verifyreqestBody, async (req, res) => {
 
     try {
-        const { name,price,color, category,description,photo} = req.body;
+        const { mileage,year,name,price,color, category,description,photo} = req.body;
         const car = await Car.create({
             name,
             price,
             color, 
             category,
             description,
-            photo,
+            photo,mileage,
+            year,
             owner:req.user_id
           });
               

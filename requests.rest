@@ -26,24 +26,24 @@ GET https://car-marketplace-backend.vercel.app/car/630cf406e8ebf5727bc0a5f4
 GET https://car-marketplace-backend.vercel.app/car/category/Coupe
 
 ###
-GET https://car-marketplace-backend.vercel.app/car/search/p
+GET http://localhost:3000/car?name=
 
 ###
 GET https://car-marketplace-backend.vercel.app/car
 content-Type: application/json
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjIyNDYzOTAsImV4cCI6MTY2MjI1MzU5MH0.KyOKReIraMCe09hlnNv6Y3hCG0nLMvXzni3ePP5OH_E
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjI0OTE0NTksImV4cCI6MTY2MjQ5ODY1OX0.7HqZSnnGrE4b79Bs5Q876YbLiRukc48RJPPREU5BXUI
 
 
 ###
-DELETE  https://car-marketplace-backend.vercel.app/car/630cf449e8ebf5727bc0a5f8
+DELETE  https://car-marketplace-backend.vercel.app/car/6313dfb2569616920a3c91a1
 content-Type: application/json
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjIyNDYzOTAsImV4cCI6MTY2MjI1MzU5MH0.KyOKReIraMCe09hlnNv6Y3hCG0nLMvXzni3ePP5OH_E
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjI0OTE0NTksImV4cCI6MTY2MjQ5ODY1OX0.7HqZSnnGrE4b79Bs5Q876YbLiRukc48RJPPREU5BXUI
 
 
 ###
-POST https://car-marketplace-backend.vercel.app/car
+POST http://localhost:3000/car
 content-Type: application/json
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjIyNDYzOTAsImV4cCI6MTY2MjI1MzU5MH0.KyOKReIraMCe09hlnNv6Y3hCG0nLMvXzni3ePP5OH_E
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjI0OTE0NTksImV4cCI6MTY2MjQ5ODY1OX0.7HqZSnnGrE4b79Bs5Q876YbLiRukc48RJPPREU5BXUI
 
 
 {
@@ -52,20 +52,22 @@ Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlY
      "color": "red",
      "category": "Coupe",
      "description": "Joi.string().required()",
+     "mileage": "250k",
+     "year": "2009",
      "photo":"file:///var/mobile/Containers/Data/Application/70CF2220-2413-49E2-A90F-96C7E3882401/Library/Caches/ExponentExperienceData/%2540alagtari957%252FCarMarketplace/ImagePicker/A5C303CC-6141-44C9-B3EC-F9CFC7801070.png"
 }
 
 ###
 GET http://localhost:4000/saved
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjIyNDYzOTAsImV4cCI6MTY2MjI1MzU5MH0.KyOKReIraMCe09hlnNv6Y3hCG0nLMvXzni3ePP5OH_E
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjI0OTE0NTksImV4cCI6MTY2MjQ5ODY1OX0.7HqZSnnGrE4b79Bs5Q876YbLiRukc48RJPPREU5BXUI
 
 ###
 POST https://car-marketplace-backend.vercel.app/saved?car_id=6313da20d23862ab65f0f10d
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjIyNDYzOTAsImV4cCI6MTY2MjI1MzU5MH0.KyOKReIraMCe09hlnNv6Y3hCG0nLMvXzni3ePP5OH_E
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjI0OTE0NTksImV4cCI6MTY2MjQ5ODY1OX0.7HqZSnnGrE4b79Bs5Q876YbLiRukc48RJPPREU5BXUI
 
 ###
 PUT https://car-marketplace-backend.vercel.app/saved?car_id=6313dfb2569616920a3c91a1
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjIyNDYzOTAsImV4cCI6MTY2MjI1MzU5MH0.KyOKReIraMCe09hlnNv6Y3hCG0nLMvXzni3ePP5OH_E
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMwYzFjYTZlYTU3MmM5YWUzZTY5YzU4IiwiZW1haWwiOiJhbGFAZ3RhcmkudG4iLCJpYXQiOjE2NjI0OTE0NTksImV4cCI6MTY2MjQ5ODY1OX0.7HqZSnnGrE4b79Bs5Q876YbLiRukc48RJPPREU5BXUI
 
 ###
 GET https://car-marketplace-backend.vercel.app/

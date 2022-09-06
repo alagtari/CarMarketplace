@@ -7,6 +7,8 @@ const schema = Joi.object({
     category: Joi.string().required(),
     description: Joi.string().required(),
     photo: Joi.string().required(),
+    mileage: Joi.string().required(),
+    year: Joi.string().required(),
 })
 
 module.exports = (req,res,next)=>{

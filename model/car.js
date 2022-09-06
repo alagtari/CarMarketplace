@@ -6,6 +6,8 @@ const carSchema = new mongoose.Schema({
   color: { type: String ,required: true},
   category: { type: String ,required: true},
   description: { type: String ,required: true},
+  year: { type: String ,required: true},
+  mileage: { type: String ,required: true},
   photo: { type: String ,required: true},
   owner: { type: mongoose.Schema.Types.ObjectId},
 });
