@@ -1,43 +1,69 @@
-import { StyleSheet, Text,View ,TextInput,TouchableOpacity,TouchableWithoutFeedback,StatusBar,Image} from 'react-native';
+import { StyleSheet, Text,View ,TextInput,TouchableOpacity,StatusBar,Image} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useState} from 'react';
-
+import axios from "axios";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
   
 
-const SignupScreen = ({ navigation }) => { 
-    const [email, onChangeEmail] = useState(null);
-    const [password, onChangePassword] = useState(null);
-    const [confirmpassword, onChangeConfirmPassword] = useState(null);
-    const [showPassword, onChangeShowPassword] = useState(false);
-    const [showConfirmPassword, onChangeShowConfirmPassword] = useState(false);
-    const hideShowPassword = () => {
-        onChangeShowPassword(!showPassword);
-      };
-      const hideShowConfirmPassword = () => {
-        onChangeShowConfirmPassword(!showConfirmPassword);
-      };  
+const LoginScreen = ({ navigation }) => { 
+  const [email, onChangeEmail] = useState(null);
+  const [password, onChangePassword] = useState(null);
+  const [confirmpassword, onChangeConfirmPassword] = useState(null);
+  const [showPassword, onChangeShowPassword] = useState(false);
+  const [showConfirmPassword, onChangeShowConfirmPassword] = useState(false);
+  const [username, onChangeUsername] = useState(null);
+  const [address, onChangeAddress] = useState(null);
+  const [phoneNumber, onChangePhoneNumber] = useState(null);
+ 
+  const hideShowPassword = () => {
+      onChangeShowPassword(!showPassword);
+    };
+    const hideShowConfirmPassword = () => {
+      onChangeShowConfirmPassword(!showConfirmPassword);
+    };  
+    const signupSubmission = ()=>{
+      if(password===confirmpassword){
+        const data ={
+          username,
+          email,
+          password,
+          address,
+          phoneNumber
+        } 
+      axios.post('/register',data)
+      .then((response)=>{
+        if(response.status == 200){
+          console.log(response.data) 
+        } 
+        else{
+          console.log(response);
+        }
+      })
+    
+      navigation.navigate('Home')
+    }
+    }
 
   return (
     <View style={styles.container}>
       <StatusBar
         barStyle="light-content"/> 
-      <View style={styles.container1}>
-        <Text style={styles.textHeader}>Registration</Text>
-           
-          
-
+      <View style={styles.Header}>
+      <View style={styles.innerHeader}>
+      <Text style={styles.textHeader}>Registration</Text>
+        </View>
       </View>
             
-      <View style={styles.container2}>
+      <View style={styles.Body}>
+      <View style={styles.InnerBody}>
+
       <View style={styles.formContainer}>
-           
-            <View style={styles.inputBox}>
+      <View style={styles.inputBox}>
                  <Feather style={styles.inputIcon} name="mail" size={20} color="gray" />
                  <TextInput
                  style={styles.input}
@@ -99,37 +125,67 @@ const SignupScreen = ({ navigation }) => {
                 }
                  
             </View>
+            <View style={styles.inputBox}>
+                 <AntDesign style={styles.inputIcon} name="user" size={20} color="gray" />
+                 <TextInput
+                 style={styles.input}
+                 onChangeText={onChangeUsername}
+                 value={username}
+                 placeholder="Username"
+                 placeholderTextColor="gray" 
+                 />
+            </View>
+            <View style={styles.inputBox}>
+                 <FontAwesome style={styles.inputIcon} name="map-marker" size={20} color="gray" />
+                 <TextInput
+                 style={styles.input}
+                 onChangeText={onChangeAddress}
+                 value={address}
+                 placeholder="Address"
+                 placeholderTextColor="gray" 
+                 />
+            </View>
+            <View style={styles.inputBox}>
+                 <FontAwesome style={styles.inputIcon} name="phone" size={20} color="gray" />
+                 <TextInput
+                 style={styles.input}
+                 onChangeText={onChangePhoneNumber}
+                 value={phoneNumber}
+                 placeholder="Phone Number"
+                 placeholderTextColor="gray" 
+                 />
+            </View>
             
        </View>
-               <TouchableWithoutFeedback onPress={() => navigation.navigate('Signup2')} >
-                    <View style={styles.loginButton}>
-                        <Text style={styles.loginButtonText}> SIGN UP</Text>
-                    </View>
-               </TouchableWithoutFeedback>
+               <TouchableOpacity activeOpacity={2} style={styles.loginButton}  onPress={() => signupSubmission()} >
+                        <Text style={styles.loginButtonText}>SIGN UP</Text>
+               </TouchableOpacity>
             
       
-            <View style={styles.loginWithButton}>
-                <Image style={styles.imageFacebook} source={require('../assets/facebook.png')}/>
-                <View style={styles.textContainer}>
-                 <Text style={styles.loginWithButtonText}>Continue with facebook</Text>
-                </View>  
+            
+      
+      </View>
+      </View>
+      <View style={styles.Footer}>
+      <View style={styles.innerFooter}>
+            <View style={styles.loginWithSocialContainer}>
+            <View style={styles.loginWithSocialIconContainer}>
+                <Image style={styles.imageFacebook} source={require('../assets/facebook.png')}/> 
             </View>
-            <View style={styles.loginWithButton}>
+            <View style={styles.loginWithSocialIconContainer}>
                 <Image style={styles.imageApple} source={require('../assets/apple.png')}/>
-                <View style={styles.textContainer}>
-                <Text style={styles.loginWithButtonText}>Continue with apple</Text>
-                </View>
             </View>
-            <View style={styles.loginContainer}>
-              <Text style={styles.loginWithButtonText}>Already have an account ? </Text>
-              <TouchableOpacity onPress={() => navigation.navigate('Login')} >
-                <Text style={[styles.loginWithButtonText,styles.loginLink]}>LOGIN </Text>
-              </TouchableOpacity>
-            </View>    
             </View>
-            
+            <View style={styles.signupContainer}>
+                <Text style={styles.loginWithButtonText}>Have an account ? </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Login')} >
+                  <Text style={[styles.loginWithButtonText,styles.signupLink]}>LOGIN </Text>
+                </TouchableOpacity>
+        </View>
+           
+        </View>
+      </View>
       
-
     </View>
     );
 }
@@ -137,44 +193,64 @@ const SignupScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'rgba(0, 0, 255, 0.05)',
+      backgroundColor: '#9250FF',
       alignItems: 'center',
       justifyContent: 'flex-start',
     },
-    container1: {
-        top:-20,
-        alignItems: 'flex-start',
-        justifyContent: 'flex-end',
-        height:'35%',
+    
+    Header: {
+        flex:1,
         width:'100%',
-        backgroundColor: 'rgb(0, 120, 255)',
-        borderBottomLeftRadius:30,
-        borderBottomRightRadius:30,
-        transform: [{ skewY: '5deg' }],   
-        shadowColor: '#000',
-        shadowOffset: {width: 2, height: 4},
-        shadowOpacity: 0.3,
-        shadowRadius: 20,
-          
+        backgroundColor: 'rgb(255,255,255)',
+      },
+      innerHeader: {
+        flex:1,
+        width:'100%',
+        backgroundColor: '#9250FF',
+        borderBottomRightRadius:75, 
+        alignItems: 'flex-start',
+      justifyContent: 'flex-end',
 
-        
+      },
+      Footer: {
+        flex:1,
+        width:'100%',
+        backgroundColor: 'rgb(255,255,255)',
+      },
+      innerFooter: {
+        flex:1,
+        width:'100%',
+        backgroundColor: '#9250FF',
+        borderTopLeftRadius:75, 
+        alignItems:'center',
+        justifyContent:'flex-start'
+
       },
       textHeader:{
-        transform: [{ skewY: '-5deg' }], 
         marginBottom:20,
         marginLeft:20,
         fontSize:30,
-          fontWeight:'600',
-          color:'white' 
+        fontWeight:'600',
+        color:'white' 
       },
-
-      container2: {
-        height:'41.5%',
+      
+      Body: {
+        flex:3,
         width:'100%',
-     
-        marginBottom:'15%',
+        borderTopLeftRadius:75,
+        borderBottomRightRadius:75, 
+        backgroundColor: 'rgb(255,255,255)',
         alignItems:'center',
-        justifyContent:'flex-start'
+        justifyContent:'center'
+
+
+      },
+      InnerBody: {
+        flex:1,
+        width:'100%',
+        paddingTop:40,
+        alignItems:'center',
+        justifyContent:'center'
 
 
       },
@@ -190,10 +266,10 @@ const styles = StyleSheet.create({
         width:'90%',
         height:50,
         paddingLeft:20,
-        marginBottom:5,
+        marginBottom:10,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        backgroundColor:'white',
+        backgroundColor:'rgba(240,240,240,0.8)',
         borderRadius:17, 
       },
       input:{
@@ -213,16 +289,16 @@ const styles = StyleSheet.create({
       width:'60%',
       height:50,
       marginTop:15,
-      marginBottom:20,
-      backgroundColor:'rgb(0,120,255)',
+      marginBottom:40,
+      backgroundColor:'#9250FF',
       borderRadius:17, 
       alignItems:'center',
       justifyContent:'center'
  
     },
     loginButtonText:{
-        fontSize:15,
-        fontWeight:'500',
+        fontSize:17,
+        fontWeight:'600',
         color:'white' 
     },
     loginWithButton:{
@@ -244,18 +320,34 @@ const styles = StyleSheet.create({
           fontWeight:'500',
           color:'black' 
       },
+      loginWithSocialContainer:{
+        marginTop:15,
+        flexDirection:'row',
+      },
+      loginWithSocialIconContainer:{
+        height:50,
+        width:50,
+        paddingLeft:4,
+        marginRight:5,
+        marginLeft:5,
+        backgroundColor:'white',
+        borderRadius:50, 
+        alignItems:'center',
+        justifyContent:'center'
+      },
       imageApple:{
-          height:20,
-          width:16,
+          height:25,
+          width:20,
           marginRight:5
 
       },
       imageFacebook:{
-          height:20,
-          width:20,
+          height:25,
+          width:25,
           marginRight:5
 
-      },loginContainer:{
+      },
+       signupContainer:{
         width:'80%',
         height:50,
         paddingLeft:25,
@@ -265,8 +357,8 @@ const styles = StyleSheet.create({
         justifyContent:'center'
 
       },
-      loginLink:{
-        color:'rgb(0,120,255)',
+      signupLink:{
+        color:'white',
         fontWeight:'700'
       }
 
@@ -276,4 +368,4 @@ const styles = StyleSheet.create({
   });
 
 
-export default SignupScreen;
+export default LoginScreen;

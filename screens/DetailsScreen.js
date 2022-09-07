@@ -1,8 +1,36 @@
-import { View,Image,StyleSheet,Text,Linking,TouchableWithoutFeedback } from "react-native";
+import { View,Image,StyleSheet,Text,Linking,TouchableOpacity } from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import  { useCallback } from "react";
+import  { useCallback ,useEffect,useState} from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
-const DetailsScreen = () => {
+const DetailsScreen = ({ route}) => {
+
+    const [item,setItem] = useState(null)
+
+    const { id } = route.params;
+
+    const getToken =async()=> {return await AsyncStorage.getItem('token')}
+   
+    useEffect(() => {
+        
+  
+            axios.get(`/car/${id}`, {
+              headers: {
+                'Authorization': getToken()
+              }
+            })
+            .then(response=>{
+                if(response.status == 200){
+                    setItem(response.data)
+                  } 
+            })
+            .catch((error)=> {
+              console.log(error);
+            })
+          
+          
+      },[])
     const url = "https://www.google.com/maps/search/?api=1&query=Los Angeles , California ";
     //const url = "http://maps.apple.com/?q=Los+Angeles";
     const phonenumber='tel:+21628734227'
@@ -20,45 +48,46 @@ const DetailsScreen = () => {
         const supported =  Linking.openURL(phonenumber)
       }
       
-
+      
+    if (!item) {
+        return null
+    }  
+      
+   
     return ( 
         <View style={styles.container}>
-            <Image style={styles.image}  source={require('../assets/porsche911.png')} />
+            <Image style={styles.image}  source={{ uri: item.photo }}  />
             <View style={styles.informations}>
                 <View style={styles.infoContainer}>
                     <View style={styles.row}>
-                        <Text style={styles.carPrice}>50,000 TND </Text>
+                        <Text style={styles.carPrice}>{item.price} </Text>
                         <FontAwesome name="bookmark-o" size={30} color="#000" />
                     </View>
                     <View style={styles.row}>
-                        <Text style={styles.carModel}>Porsche 911 Turbo S</Text>
+                        <Text style={styles.carModel}>{item.name} </Text>
                     </View>
                     <View style={styles.row}>
                         <View style={styles.infoBox}>
-                            <Text style={styles.info}>100k km</Text>
+                            <Text style={styles.info}>{item.mileage} km</Text>
                         </View>
                         <View style={styles.infoBox}>
-                        <Text style={styles.info}>Gray</Text>
+                        <Text style={styles.info}>{item.color}</Text>
                         </View>
                         <View style={styles.infoBox}>
-                        <Text style={styles.info}>1988</Text>
+                        <Text style={styles.info}>{item.year}</Text>
                         </View>
                     </View>
-                    <TouchableWithoutFeedback onPress={handlePress}  >
-                        <View style={styles.row}>
-                            <FontAwesome style={styles.locationIcon} name="map-marker"color="#FF0000" />
-                            <Text style={styles.location}>Los Angeles , California </Text>
-                        </View>    
-                    </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={callNumber}  >
-                       <View style={styles.row}>
-                        <FontAwesome style={styles.locationIcon} name="phone"color="#32CD32" />
-                        <Text style={styles.location}> 28 755 588 </Text>
-                        </View>    
-                    </TouchableWithoutFeedback>
+                    <TouchableOpacity activeOpacity={2} style={styles.row} onPress={handlePress}  >
+                        <FontAwesome style={styles.locationIcon} name="map-marker"color="#FF0000" />
+                            <Text style={styles.location}>{item.address}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity activeOpacity={2} style={styles.row} onPress={callNumber}  >
+                       <FontAwesome style={styles.locationIcon} name="phone"color="#32CD32" />
+                        <Text style={styles.location}>{item.phone}</Text>
+                    </TouchableOpacity>
                     <View style={styles.descriptionBox}>
-                        <Text style={styles.descriptionTitle}>Porsche 911 Turbo S</Text>
-                        <Text style={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer, when an unknown printer, when an unknown printer, when an unknown printer </Text>
+                        <Text style={styles.descriptionTitle}>Description</Text>
+                        <Text style={styles.description}>{item.description}</Text>
                     </View>
                 </View>
             </View>
@@ -113,7 +142,7 @@ infoBox:{
     justifyContent:'center',
     marginLeft:'1.5%',
     marginRight:'1.5%',
-    backgroundColor:'rgba(0, 120, 255,0.7)',
+    backgroundColor:'#9250FF',
     borderRadius:50,
 },
 info:{

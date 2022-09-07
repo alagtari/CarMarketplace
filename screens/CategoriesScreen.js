@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { View,Image, Text,FlatList, StyleSheet,StatusBar } from "react-native";
+import { View,Image, Text,FlatList,TouchableOpacity, StyleSheet,StatusBar } from "react-native";
 
-const CategoriesScreen = () => {
+const CategoriesScreen = ({navigation}) => {
   const [alignContent, setAlignContent] = useState("flex-start");
   const CATEGORI0ES = [
     {
@@ -101,12 +101,15 @@ const CategoriesScreen = () => {
           numColumns={3}
           keyExtractor={(item, index) => item + index + item}
           renderItem={({ item }) =>
-           <View style={styles.box} >
+          <TouchableOpacity  style={styles.box} onPress={() => navigation.navigate('AddItem',{category:item.title})} >
+
               <View style={[styles.image,{backgroundColor:item.color}]}>
                 <Image style={item.dementions} source={item.icon}/>
               </View>
               <Text style={styles.title}>{item.title}</Text>
-           </View>}
+              </TouchableOpacity  >
+
+           }
       />
     </View>
   );

@@ -8,11 +8,12 @@ import DetailsScreen from './screens/DetailsScreen';
 import Test from './components/Test';
 import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
-import SignupScreen2 from './screens/SignupScreen2';
-
+import CategoryScreen from './screens/CategoryScreen';
+import './services/axios'
 const Stack = createNativeStackNavigator();
 
 function App() {
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
@@ -20,10 +21,11 @@ function App() {
         <Stack.Screen name="Home" component={HomeScreen}  />
         <Stack.Screen name="Login" component={LoginScreen}  />
         <Stack.Screen name="Signup" component={SignupScreen}  />
-        <Stack.Screen name="Signup2" component={SignupScreen2}  />
-        <Stack.Screen name="test" component={Test}  />
+        <Stack.Screen name="test" component={Test} />
         <Stack.Screen name="Search" component={SearchScreen}  />
         <Stack.Screen name="Details" component={DetailsScreen}  />
+        <Stack.Screen name="Category" component={CategoryScreen}  />
+
 
         </Stack.Group>
       <Stack.Group screenOptions={{ presentation: 'modal' }}>

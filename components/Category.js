@@ -1,25 +1,29 @@
-import { StyleSheet, Image,View,Text } from 'react-native';
+import { StyleSheet, Image,View,Text,TouchableOpacity } from 'react-native';
 
-const Category = ({item}) => {
+const Category = ({item,navigation}) => {
+
     return (
-        <View style={styles.category}>
-           <View style={styles.imageContainer}>
-           <Image style={styles.image} source={require('../assets/porcshe-category.png')} />
+        <TouchableOpacity style={styles.category} activeOpacity={2} onPress={() => navigation.navigate('Category',{color:item.color,title:item.title})} >
+           <View style={[styles.imageContainer,{backgroundColor:item.color}]}>
+           <Image style={item.dementions} source={item.icon} />
            </View>
            <Text style={styles.title}>{item.title}</Text>
-           <Text style={styles.description}>{item.number} nearly</Text>
-        </View>
+        </TouchableOpacity>
     );
 }
 const styles = StyleSheet.create({
     category: {
-      transform: [{ scaleX: 0.9 }],
+      marginLeft:8,
       height:160,
       width:120,
       backgroundColor:'white',
       borderRadius:20 ,
       alignItems: 'center',
       justifyContent: 'flex-start',
+      shadowColor: '#000',
+      shadowOffset: {width: 2, height: 4},
+      shadowOpacity: 0.1,
+      shadowRadius: 10,
     },
     imageContainer: {
         height:65,
@@ -28,23 +32,15 @@ const styles = StyleSheet.create({
         backgroundColor:'#F8AFA6',
         borderRadius:50 ,
         alignItems: 'center',
-        justifyContent: 'flex-start', 
+        justifyContent: 'center', 
       },
-      image: {
-        height:65,
-        width:90,   
-      },
+ 
       title: {
-        marginTop:8, 
+        marginTop:20, 
         fontSize:13,
         fontWeight:'700'
       }, 
-      description: {
-        marginTop:2, 
-        fontSize:11,
-        fontWeight:'400',
-        color:'gray'
-      }, 
+    
 })
 
 export default Category;

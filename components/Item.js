@@ -1,30 +1,56 @@
-import { StyleSheet, Text,View ,Image,TouchableWithoutFeedback} from 'react-native';
+import { StyleSheet, Text,View ,Image,TouchableOpacity} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { useState } from 'react';
-const Item = ({navigation ,item}) => {
-  const [saved,setSaved]=useState(item.saved)
+import { useState,useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import {Dimensions} from 'react-native';
+const {height, width} = Dimensions.get('window');
+
+const Item = ({navigation ,item ,isSaved}) => {
+  
+  const [saved,setSaved]=useState(isSaved)
+
+  const unsave =async()=> {
+    const token = await AsyncStorage.getItem('token')
+    axios.put(`/saved?car_id=${item._id}`,{}, {
+      headers: {
+        'Authorization': token
+      }
+    })
+   
+    
+  }
+
+  useEffect(()=>{
+    if(!saved){ 
+      unsave()  
+    }
+  },[saved])
+  
     return (
-      <TouchableWithoutFeedback  onPress={() => navigation.navigate('Details')}>
+      <TouchableOpacity activeOpacity={2} onPress={() => {navigation.navigate('Details',{id:item._id})}}>
         <View style={styles.item}>
-          <Image style={styles.image} source={item.image} />
+          <Image style={styles.image} source={{ uri: item.photo }}  />
           <View style={styles.textBox}>
           <Text style={styles.yearText}>{item.year}</Text>
-          <Text style={styles.modelText}>{item.carName}</Text>
-          <Text style={styles.infoText}>{item.km}   {item.color}    {item.price} </Text>
+          <Text style={styles.modelText}>{item.name}</Text>
+          <Text style={styles.infoText}>{item.mileage} km   {item.color}    {item.price} </Text>
           </View>
           <View style={styles.iconBox}>
-          <TouchableWithoutFeedback onPress={() => setSaved(!saved)}>
+          <TouchableOpacity 
+          activeOpacity={2} 
+          onPress={() => setSaved(!saved)}>
             <FontAwesome name={saved?"bookmark":"bookmark-o"} size={20} color="#000" />
-          </TouchableWithoutFeedback>
+          </TouchableOpacity >
           
           </View>
         </View>
-      </TouchableWithoutFeedback>  
+      </TouchableOpacity>  
     );
 }
 const styles = StyleSheet.create({
     item: {
-      width:340, 
+      width:width*0.9, 
       height:100,
       flexDirection:'row',
       alignItems: 'center',
@@ -33,6 +59,11 @@ const styles = StyleSheet.create({
       borderRadius:20 ,
       paddingLeft:10,
       marginBottom:15,
+      shadowColor: '#000',
+      shadowOffset: {width: 2, height: 4},
+      shadowOpacity: 0.15,
+      shadowRadius: 10,
+      
       
     },
     image: {

@@ -1,5 +1,5 @@
 import {useState,useEffect} from 'react';
-import { StyleSheet, Text,Image,View,TouchableWithoutFeedback} from 'react-native';
+import { StyleSheet, Text,Image,View,TouchableOpacity} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Dimensions} from 'react-native';
 import InView from 'react-native-component-inview'
@@ -11,12 +11,12 @@ const SearchedItem = ({item,InViewItem,setInViewItem,navigation}) => {
     const [saved, setSaved] = useState(item.saved)
     const checkVisible = (isVisible) => {
         if (isVisible){
-            setInViewItem(item.id)
+            setInViewItem(item._id)
         } 
       }
       useEffect(()=>{
-        InViewItem===item.id?setScale([{ scaleX: 1 },{ scaleY: 1 }]):setScale([{scaleX: 0.85  },{ scaleY: 0.85 }])
-      },[InViewItem===item.id])  
+        InViewItem===item._id?setScale([{ scaleX: 1 },{ scaleY: 1 }]):setScale([{scaleX: 0.85  },{ scaleY: 0.85 }])
+      },[InViewItem===item._id])  
     
       const styles = StyleSheet.create({
         SearchedItem:{
@@ -25,7 +25,11 @@ const SearchedItem = ({item,InViewItem,setInViewItem,navigation}) => {
             height:(height /100)*50,
             width:(width /100)*90,
             backgroundColor:'white',
-            borderRadius:30
+            borderRadius:30,
+            shadowColor: '#000',
+            shadowOffset: {width: 4, height: 4},
+            shadowOpacity: 0.2,
+            shadowRadius: 10,
         },
         imageBox:{
             height:'55%',
@@ -41,8 +45,8 @@ const SearchedItem = ({item,InViewItem,setInViewItem,navigation}) => {
             position:'absolute',
             width:55,
             height:55,
-            backgroundColor:'rgb(0, 120, 255)',
-            bottom:'-15%',
+            backgroundColor:'#9250FF',
+            bottom:'-10%',
             right:'10%',
             borderRadius:50,
             alignItems:'center',
@@ -76,7 +80,7 @@ const SearchedItem = ({item,InViewItem,setInViewItem,navigation}) => {
             justifyContent:'center',
             marginLeft:'1.5%',
             marginRight:'1.5%',
-            backgroundColor:'rgba(0, 120, 255,0.7)',
+            backgroundColor:'#9250FF',
             borderRadius:50,
         },
         info:{
@@ -88,28 +92,29 @@ const SearchedItem = ({item,InViewItem,setInViewItem,navigation}) => {
     
     })   
     return (
-        <TouchableWithoutFeedback  onPress={() => navigation.navigate('Details')}>
+        <TouchableOpacity activeOpacity={2}  onPress={() =>{ 
+            navigation.navigate('Details',{id:item._id})
+            
+        }}>
            <View style={styles.SearchedItem}>
             <View style={styles.imageBox}>
-                <Image style={styles.image} source={require('../assets/porsche911.png')} />
-                <TouchableWithoutFeedback onPress={() => setSaved(!saved)}>
-                    <View style={styles.iconBox}>
+                <Image style={styles.image} source={{ uri: item.photo }} />
+                <TouchableOpacity style={styles.iconBox} onPress={() => setSaved(!saved)}>
                         <FontAwesome name={saved?"bookmark":"bookmark-o"} size={20} color="#fff" />   
-                    </View>
-                 </TouchableWithoutFeedback>
+                 </TouchableOpacity>
             </View>
             <View style={styles.infoContainer}>
                 <View style={styles.container}>
                 
-                    <Text style={styles.carPrice}>{item.price}</Text>
+                    <Text style={styles.carPrice}>${item.price}</Text>
                 <InView onChange={(isVisible) => checkVisible(isVisible)}></InView>
                 </View>
                 <View style={styles.container}>
-                    <Text style={styles.carModel}>{item.carName}</Text>
+                    <Text style={styles.carModel}>{item.name}</Text>
                 </View>
                 <View style={styles.container}>
                     <View style={styles.infoBox}>
-                        <Text style={styles.info}>{item.km}</Text>
+                        <Text style={styles.info}>{item.mileage} km</Text>
                     </View>
                     <View style={styles.infoBox}>
                     <Text style={styles.info}>{item.color}</Text>
@@ -120,7 +125,7 @@ const SearchedItem = ({item,InViewItem,setInViewItem,navigation}) => {
                 </View>
             </View>
          </View>
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
     );
     
 };
